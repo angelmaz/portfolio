@@ -1,0 +1,1296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Angelika Mazurek — Product & AI UX Designer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-main: #ffffff;
+      --bg-surface: #f8fafc;
+      --bg-subtle: #f1f5f9;
+      --bg-card: #ffffff;
+      --border-light: #e2e8f0;
+      --border-hover: #cbd5e1;
+      --text-primary: #0f172a;
+      --text-secondary: #334155;
+      --text-muted: #64748b;
+      --emerald-600: #059669;
+      --emerald-700: #047857;
+      --emerald-50: #ecfdf5;
+      --emerald-100: #d1fae5;
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 16px;
+      --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+      --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+      --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -4px rgba(0, 0, 0, 0.04);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background-color: var(--bg-main);
+      color: var(--text-primary);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .container {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Navigation */
+    header {
+      position: sticky;
+      top: 0;
+      background: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-light);
+      z-index: 100;
+    }
+
+    .nav-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 72px;
+    }
+
+    .logo-group {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-name {
+      font-weight: 700;
+      font-size: 1.125rem;
+      letter-spacing: -0.02em;
+    }
+
+    .badge-tag {
+      font-size: 0.75rem;
+      font-weight: 600;
+      background: var(--emerald-50);
+      color: var(--emerald-700);
+      border: 1px solid var(--emerald-100);
+      padding: 2px 8px;
+      border-radius: 999px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      transition: color 0.15s ease;
+    }
+
+    .nav-links a:hover { color: var(--text-primary); }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      padding: 9px 16px;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      transition: all 0.15s ease;
+      border: 1px solid transparent;
+    }
+
+    .btn-primary { background: var(--text-primary); color: #ffffff; }
+    .btn-primary:hover { background: #1e293b; }
+    .btn-outline { background: #ffffff; border-color: var(--border-light); color: var(--text-primary); }
+    .btn-outline:hover { background: var(--bg-surface); border-color: var(--border-hover); }
+    .btn-emerald { background: var(--emerald-600); color: #ffffff; }
+    .btn-emerald:hover { background: var(--emerald-700); }
+
+    /* Hero */
+    .hero {
+      padding: 80px 0 0;
+    }
+
+    .hero-pretitle {
+      font-size: 0.875rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--emerald-600);
+      margin-bottom: 12px;
+    }
+
+    .hero-title {
+      font-size: 3rem;
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -0.03em;
+      color: var(--text-primary);
+      margin-bottom: 20px;
+    }
+
+    .hero-desc {
+      font-size: 1.15rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin-bottom: 32px;
+      max-width: 880px;
+    }
+
+    .stat-card {
+      background: var(--bg-surface);
+      padding: 16px 20px;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-light);
+    }
+
+    /* Section Structure */
+    section { padding: 80px 0; }
+
+    .section-header { margin-bottom: 48px; }
+    .section-tag {
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--emerald-600);
+      margin-bottom: 8px;
+      display: block;
+    }
+    .section-title {
+      font-size: 2rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--text-primary);
+    }
+
+    /* Case Card */
+    .case-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      margin-bottom: 72px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .case-header {
+      padding: 36px 40px 24px;
+      border-bottom: 1px solid var(--border-light);
+      background: #f1f5f9;
+    }
+
+    .case-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      font-size: 0.85rem;
+      color: #475569;
+      margin-bottom: 12px;
+    }
+
+    .case-meta strong { color: var(--text-primary); }
+
+    .case-title {
+      font-size: 1.8rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 8px;
+    }
+
+    .case-tagline {
+      font-size: 1.05rem;
+      color: var(--text-secondary);
+    }
+
+    .case-body { padding: 40px; }
+
+    .grid-2col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: start;
+    }
+
+    .case-details h4 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin: 24px 0 12px;
+      color: var(--text-primary);
+    }
+
+    .case-details h4:first-child { margin-top: 0; }
+
+    .case-details p {
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      margin-bottom: 16px;
+    }
+
+    .case-details ul {
+      margin-left: 20px;
+      margin-bottom: 20px;
+      color: var(--text-secondary);
+      font-size: 0.925rem;
+    }
+
+    .case-details li { margin-bottom: 8px; }
+
+    .case-artifact-img {
+      width: 100%;
+      height: 260px;
+      object-fit: contain;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-light);
+      margin-bottom: 24px;
+      display: block;
+      background: var(--bg-surface);
+    }
+
+    /* Interactive Box / Widget */
+    .interactive-box {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-md);
+      padding: 24px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .box-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border-light);
+    }
+
+    .box-title {
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--text-primary);
+    }
+
+    .box-badge {
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 2px 8px;
+      border-radius: 4px;
+      background: #ffffff;
+      border: 1px solid var(--border-light);
+    }
+
+    /* Tabs */
+    .tab-btn-group {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+    }
+
+    .tab-btn {
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 6px 12px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border-light);
+      background: #ffffff;
+      color: var(--text-secondary);
+      cursor: pointer;
+    }
+
+    .tab-btn.active {
+      background: var(--text-primary);
+      color: #ffffff;
+      border-color: var(--text-primary);
+    }
+
+    .tab-card-display {
+      background: #ffffff;
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-sm);
+      padding: 16px;
+      min-height: 150px;
+    }
+
+    .tab-card-display h5 { font-size: 0.95rem; font-weight: 700; margin-bottom: 6px; }
+    .tab-card-display p { font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5; }
+    .tab-card-display .callout {
+      margin-top: 12px;
+      padding: 8px 12px;
+      border-radius: 6px;
+      background: var(--emerald-50);
+      border-left: 3px solid var(--emerald-600);
+      font-size: 0.8rem;
+      color: var(--emerald-700);
+      font-weight: 500;
+    }
+
+    /* Focus & Recording Simulator */
+    .sim-viewport {
+      background: #e2e8f0;
+      height: 160px;
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 16px;
+      border: 1px solid #cbd5e1;
+    }
+
+    .cell-dots {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-image: radial-gradient(#0f172a 1.5px, transparent 1.5px), radial-gradient(#059669 2px, transparent 2px);
+      background-size: 28px 28px, 44px 44px;
+      background-position: 0 0, 14px 14px;
+      transition: filter 0.08s ease;
+    }
+
+    .sim-controls { display: flex; flex-direction: column; gap: 12px; }
+
+    .slider-wrap {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+    .slider-wrap input { flex: 1; }
+
+    /* MoodBridge Phone Simulator */
+    .phone-mockup {
+      width: 100%;
+      max-width: 320px;
+      margin: 0 auto;
+      background: #ffffff;
+      border: 2px solid var(--border-light);
+      border-radius: 28px;
+      padding: 20px;
+      box-shadow: var(--shadow-md);
+    }
+
+    .phone-screen { display: flex; flex-direction: column; gap: 14px; }
+
+    .mood-options {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+
+    .mood-btn {
+      padding: 10px 8px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      border: 1px solid var(--border-light);
+      background: var(--bg-surface);
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      text-align: center;
+    }
+
+    .mood-btn.active {
+      background: var(--emerald-50);
+      border-color: var(--emerald-600);
+      color: var(--emerald-700);
+    }
+
+    .action-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-sm);
+      padding: 14px;
+      text-align: center;
+    }
+
+    .action-name { font-size: 0.95rem; font-weight: 700; color: var(--text-primary); margin-bottom: 4px; }
+    .action-meta { font-size: 0.75rem; color: var(--text-muted); }
+
+    /* Comparison Table */
+    .comp-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.85rem;
+      margin: 16px 0;
+      border: 1px solid var(--border-light);
+      background: #ffffff;
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+    }
+    .comp-table th, .comp-table td {
+      padding: 10px 14px;
+      text-align: left;
+      border-bottom: 1px solid var(--border-light);
+    }
+    .comp-table th { background: var(--bg-surface); font-weight: 700; }
+
+    /* Flying Recipes Interactive */
+    .fr-quick-convert {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+    .fr-qc-box {
+      background: #ffffff;
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-sm);
+      padding: 10px;
+      text-align: center;
+    }
+    .fr-qc-box label { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; color: var(--text-muted); }
+    .fr-qc-box input { width: 100%; padding: 4px; margin-top: 4px; text-align: center; font-size: 0.85rem; border: 1px solid var(--border-light); border-radius: 4px; }
+
+    .scaler-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+    .scaler-field label { display: block; font-size: 0.775rem; font-weight: 600; margin-bottom: 6px; color: var(--text-muted); text-transform: uppercase; }
+    .scaler-field select, .scaler-field input { width: 100%; padding: 8px 12px; border-radius: var(--radius-sm); border: 1px solid var(--border-light); font-size: 0.875rem; background: #ffffff; }
+
+    .ingredient-list {
+      list-style: none;
+      background: #ffffff;
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-sm);
+      padding: 12px;
+      font-size: 0.85rem;
+    }
+    .ingredient-item { display: flex; justify-content: space-between; padding: 6px 0; border-bottom: 1px solid var(--border-light); }
+    .ingredient-item:last-child { border-bottom: none; }
+
+    /* Experience & Background */
+    .exp-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+    }
+    .exp-card { background: var(--bg-card); border: 1px solid var(--border-light); border-radius: var(--radius-md); padding: 28px; }
+    .exp-card h4 { font-size: 1.15rem; font-weight: 700; margin-bottom: 16px; color: var(--text-primary); }
+    .timeline-item { margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid var(--border-light); }
+    .timeline-item:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
+    .timeline-role { font-size: 0.95rem; font-weight: 700; color: var(--text-primary); }
+    .timeline-company { font-size: 0.85rem; color: var(--emerald-700); font-weight: 600; margin-bottom: 4px; }
+    .timeline-desc { font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5; }
+
+    /* Contact Card */
+    .contact-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-lg);
+      padding: 48px;
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    /* Toast Notification */
+    #toast {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: var(--text-primary);
+      color: #ffffff;
+      padding: 12px 20px;
+      border-radius: var(--radius-sm);
+      font-size: 0.875rem;
+      font-weight: 600;
+      box-shadow: var(--shadow-lg);
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(12px);
+      transition: all 0.25s ease;
+      z-index: 1000;
+    }
+    #toast.show { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 860px) {
+      .hero-title { font-size: 2.25rem; }
+      .grid-2col, .exp-grid { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+      .case-header, .case-body { padding: 24px; }
+      .fr-quick-convert { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <header>
+    <div class="container nav-wrap">
+      <div class="logo-group">
+        <a href="index.html" class="logo-name">Angelika Mazurek</a>
+        <span class="badge-tag">Product & AI UX</span>
+      </div>
+      <ul class="nav-links">
+        <li><a href="#work">Case Studies</a></li>
+        <li><a href="#experience">Background</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <div class="nav-actions">
+        <a href="resume.html" class="btn btn-outline">Resume ↗</a>
+        <a href="#contact" class="btn btn-primary">Get in Touch</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <span class="hero-pretitle">Portfolio & Case Studies</span>
+      <h1 class="hero-title">Designing intuitive workflows for complex systems, AI interactions & hardware infrastructure.</h1>
+      <p class="hero-desc">
+        Product Designer bridging software engineering, healthcare, and human-in-the-loop AI validation. Specializing in complex technical workflows, medical technology, and human-centered AI.
+      </p>
+      <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+        <a href="#work" class="btn btn-emerald">Explore Selected Work</a>
+        <a href="resume.html" class="btn btn-outline">View Resume ↗</a>
+        <a href="mailto:angelika.a.mazurek@gmail.com" class="btn btn-outline">angelika.a.mazurek@gmail.com</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Selected Work -->
+  <section id="work">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Featured Work</span>
+        <h2 class="section-title">Selected Case Studies</h2>
+      </div>
+
+      <!-- Case Study 1: CheckCells -->
+      <article class="case-card">
+        <div class="case-header">
+          <div class="case-meta">
+            <span><strong>Role:</strong> Product Development & UX/AI Validation Contributor</span>
+            <span>&bull;</span>
+            <span><strong>Timeline:</strong> 2023 &ndash; 2026</span>
+            <span>&bull;</span>
+            <span><strong>Context:</strong> Fertility Laboratories</span>
+          </div>
+          <h3 class="case-title">CheckCells / Seaman PRO &mdash; AI-Powered Laboratory Analysis & Hardware Ecosystem</h3>
+          <p class="case-tagline">Contributing to the evolution of an optical imaging device, computer vision validation, and laboratory software within a broader ecosystem that also includes a patient-facing AI companion.</p>
+        </div>
+        <div class="case-body">
+          <div class="grid-2col">
+            <div class="case-details">
+              <img src="assets/seaman-v4.jpg" alt="Seaman PRO Hardware Station" class="case-artifact-img">
+              <h4>End-to-End Product System</h4>
+              <p>
+                Semen analysis traditionally required tedious, error-prone manual microscopic counting. CheckCells built Seaman PRO to automate quantitative parameter detection (Concentration, Motility, Morphology, Vitality, pH) referenced against WHO 6th ed. standards.
+              </p>
+              <h4>Key Hardware & Interaction Iterations</h4>
+              <ul>
+                <li><strong>Manual Focus Calibration:</strong> Replaced static focal distances with a rotatable threaded upper cylinder, guided by live-feed software instructions.</li>
+                <li><strong>Spatial Wayfinding:</strong> Redesigned slide rails with precision alignment and etched chamber numbering (1&ndash;4) directly onto the hardware.</li>
+                <li><strong>Structural Stability:</strong> Shifted from lightweight circular bases to a solid rectangular base to improve stability and reduce unwanted optical shift during sample handling.</li>
+                <li><strong>Human-in-the-Loop AI:</strong> Compared model detections against manual reference counts; labeled ~500 images and video frames in Label Studio to support model improvement.</li>
+                <li><strong>Documentation:</strong> Co-authored Seaman PRO Instructions for Use (IFU) documentation and lab operator guidance.</li>
+              </ul>
+              <div style="margin-top: 24px;">
+                <a href="checkcells.html" class="btn btn-emerald">Read Full Case Study &rarr;</a>
+              </div>
+            </div>
+
+            <!-- Interactive Widget for CheckCells -->
+            <div class="interactive-box">
+              <div class="box-header">
+                <span class="box-title">Hardware Evolution (Portfolio Demo)</span>
+                <span class="box-badge">2023 &ndash; 2026 Trajectory</span>
+              </div>
+
+              <div class="tab-btn-group">
+                <button class="tab-btn active" onclick="switchHwTab(0, this)">V1 Stand</button>
+                <button class="tab-btn" onclick="switchHwTab(1, this)">V2 Machined</button>
+                <button class="tab-btn" onclick="switchHwTab(2, this)">V3 Optical Mount</button>
+                <button class="tab-btn" onclick="switchHwTab(3, this)">V4 Laboratory</button>
+              </div>
+
+              <div id="hw-display" class="tab-card-display">
+                <h5 id="hw-title">V1: Laboratory Stand Prototype</h5>
+                <p id="hw-desc">Initial benchtop prototype testing focal length and magnification geometry using an adjustable laboratory clamp stand.</p>
+                <div id="hw-callout" class="callout">Finding: Unstable focal plane; demonstrated need for rigid dedicated housing.</div>
+              </div>
+
+              <div style="margin-top: 24px;">
+                <div class="box-header" style="margin-bottom: 8px;">
+                  <span class="box-title">Focus & Quality Gate Simulator (Portfolio Demo)</span>
+                </div>
+                <div class="sim-viewport">
+                  <div id="cell-feed" class="cell-dots" style="filter: blur(10px);"></div>
+                  <span id="focus-label" style="position: relative; z-index: 2; background: rgba(255,255,255,0.92); padding: 4px 10px; border-radius: 4px; font-size: 0.75rem; font-weight: 700; border: 1px solid var(--border-light);">Focus: 20% (Adjust ring)</span>
+                </div>
+                <div class="sim-controls">
+                  <div class="slider-wrap">
+                    <span>Blur</span>
+                    <input type="range" min="0" max="100" value="20" id="focus-slider" oninput="adjustFocusSim(this.value)">
+                    <span>Sharp</span>
+                  </div>
+                  <div style="display: flex; gap: 10px; margin-top: 6px;">
+                    <button class="btn btn-outline" style="flex: 1; padding: 6px;" onclick="showToast('Sample rejected. Ready for re-capture.')">Reject & Retake</button>
+                    <button class="btn btn-primary" style="flex: 1; padding: 6px;" onclick="showToast('Recording accepted! Transmitting frames to Cloud ML...')">Accept Recording</button>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Case Study 2: MoodBridge (Stanford Capstone) -->
+      <article class="case-card">
+        <div class="case-header">
+          <div class="case-meta">
+            <span><strong>Role:</strong> Product Designer (AI Strategy, Interaction Architecture & Ethical UX)</span>
+            <span>&bull;</span>
+            <span><strong>Context:</strong> Stanford Online Capstone</span>
+            <span>&bull;</span>
+            <span><strong>Paradigm:</strong> Intelligence Augmentation (IA)</span>
+          </div>
+          <h3 class="case-title">MoodBridge 2.0 &mdash; Ethical Intelligence-Augmentation System</h3>
+          <p class="case-tagline">Designing an emotional regulation companion focused on human autonomy, decision fatigue reduction, and responsible AI safeguards.</p>
+        </div>
+        <div class="case-body">
+          <div class="grid-2col">
+            <div class="case-details">
+              <img src="assets/moodbridge-wireframes.png" alt="MoodBridge Core Wireframes" class="case-artifact-img">
+              <h4>Paradigm: Prescriptive Automation vs. Augmented Intelligence</h4>
+              <p>
+                In emotional regulation, highly prescriptive AI systems can increase friction and reduce a user's sense of control. MoodBridge instead uses an Augmented Intelligence model: AI proposes one contextual option, while the user retains full authority to accept, modify, or skip it.
+              </p>
+              
+              <table class="comp-table">
+                <thead>
+                  <tr>
+                    <th>Dimension</th>
+                    <th>Prescriptive Automation</th>
+                    <th>Intelligence Augmentation (MoodBridge)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Control</strong></td>
+                    <td>System determines next step</td>
+                    <td><strong>AI proposes &rarr; User decides</strong></td>
+                  </tr>
+                  <tr>
+                    <td><strong>Engagement</strong></td>
+                    <td>Persistent tracking / streaks</td>
+                    <td><strong>Optional check-ins / no streak penalties</strong></td>
+                  </tr>
+                  <tr>
+                    <td><strong>Data Privacy</strong></td>
+                    <td>Cloud-dependent personalization</td>
+                    <td><strong>Privacy-first / local-first approach</strong></td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <h4>User Research Insights</h4>
+              <ul>
+                <li><strong>Decision Fatigue:</strong> In low-mood states, choosing from large catalogs of activities increases cognitive burden; the interface must present exactly <strong>one</strong> realistic micro-action.</li>
+                <li><strong>Guilt Mechanics:</strong> Standard gamification and streak counters exacerbate anxiety on missed days; the system must support guilt-free skipping.</li>
+                <li><strong>Tone Sensitivity:</strong> Overly cheerful or prescriptive language can reduce trust and engagement; the interaction requires neutral, grounded communication.</li>
+              </ul>
+              <div style="margin-top: 24px;">
+                <a href="moodbridge.html" class="btn btn-emerald">Read Full Case Study &rarr;</a>
+              </div>
+            </div>
+
+            <!-- Interactive Widget for MoodBridge -->
+            <div class="interactive-box">
+              <div class="box-header">
+                <span class="box-title">AI Interaction Model Exploration</span>
+                <span class="box-badge">Capstone Design Analysis</span>
+              </div>
+
+              <div class="tab-btn-group">
+                <button class="tab-btn active" onclick="switchMbModel(0, this)">Mixed-Initiative (Selected)</button>
+                <button class="tab-btn" onclick="switchMbModel(1, this)">Interface Agent</button>
+                <button class="tab-btn" onclick="switchMbModel(2, this)">Direct Dashboard</button>
+              </div>
+
+              <div id="mb-model-display" class="tab-card-display" style="margin-bottom: 20px;">
+                <h5 id="mb-model-title">Pattern C: Mixed-Initiative Interaction (Selected Direction)</h5>
+                <p id="mb-model-desc">Shared control where user provides quick emotional input, AI generates 1 micro-suggestion (1–5 min), and user can instantly Accept, Modify, or Skip.</p>
+                <div id="mb-model-callout" class="callout">Rationale: Delivers the optimal balance between minimal cognitive load on low-energy days and complete preservation of human agency.</div>
+              </div>
+
+              <!-- Interactive Simulator -->
+              <div class="phone-mockup">
+                <div class="phone-screen">
+                  <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-light); padding-bottom: 8px;">
+                    <span style="font-weight: 700; font-size: 0.85rem;">MoodBridge 2.0</span>
+                    <span style="font-size: 0.7rem; color: var(--emerald-600); font-weight: 600;">Human-in-the-Loop AI</span>
+                  </div>
+                  <div style="font-size: 0.825rem; font-weight: 600;">How are you feeling today?</div>
+                  <div class="mood-options">
+                    <button class="mood-btn active" onclick="selectMood('Neutral', this)">Neutral</button>
+                    <button class="mood-btn" onclick="selectMood('Stressed', this)">Stressed</button>
+                    <button class="mood-btn" onclick="selectMood('Low', this)">Low</button>
+                    <button class="mood-btn" onclick="selectMood('Fine', this)">Fine</button>
+                  </div>
+
+                  <div class="action-card">
+                    <div class="action-meta">Suggested Micro-Action:</div>
+                    <div id="mood-action-text" class="action-name">1-Minute Grounding Breath</div>
+                    <div id="mood-reason-text" class="action-meta" style="margin-top: 4px; color: var(--emerald-700);">Designed to require minimal effort</div>
+                  </div>
+
+                  <div style="display: flex; gap: 6px;">
+                    <button class="btn btn-primary" style="flex: 1; padding: 6px; font-size: 0.75rem;" onclick="showToast('Micro-action started! 1-minute timer active.')">Accept</button>
+                    <button class="btn btn-outline" style="flex: 1; padding: 6px; font-size: 0.75rem;" onclick="modifyMoodSuggestion()">Modify</button>
+                    <button class="btn btn-outline" style="flex: 1; padding: 6px; font-size: 0.75rem;" onclick="showToast('Action skipped without penalty.')">Skip</button>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Case Study 3: TaskApp (Google UX Certificate) -->
+      <article class="case-card">
+        <div class="case-header">
+          <div class="case-meta">
+            <span><strong>Role:</strong> Solo UX Designer & Researcher</span>
+            <span>&bull;</span>
+            <span><strong>Context:</strong> Google UX Design Certificate</span>
+            <span>&bull;</span>
+            <span><strong>Methods:</strong> User Research, IA, Paper Wireframing, 2-Round Usability Testing</span>
+          </div>
+          <h3 class="case-title">TaskApp &mdash; Cross-Platform Task Architecture & Usability Engineering</h3>
+          <p class="case-tagline">Designing an intuitive task organization system for busy professionals managing split home and work responsibilities.</p>
+        </div>
+        <div class="case-body">
+          <div class="grid-2col">
+            <div class="case-details">
+              <img src="assets/taskapp-flow.png" alt="TaskApp Flow Map" class="case-artifact-img">
+              <h4>Research & The Persona (Lukas)</h4>
+              <p>
+                Interviews revealed that busy professionals (like Lukas, a software engineer managing dual work and family logistics) struggle with cluttered apps, lack of category filtering, and poor hands-free entry during commutes.
+              </p>
+              <h4>End-to-End Design Process</h4>
+              <ul>
+                <li><strong>Paper Wireframing:</strong> Sketched 5 iterative layout variants exploring rapid category tagging, calendar placement, and bottom thumb-zone actions.</li>
+                <li><strong>Information Architecture & Flow:</strong> Mapped complete screen architecture in Figma connecting tag lists, task modals, date pickers, and category directories.</li>
+                <li><strong>Usability Testing (2 Rounds, 6 Participants):</strong>
+                  <ul>
+                    <li><em>Round 1:</em> Identified strong demand for hands-free voice command entry and shared list coordination.</li>
+                    <li><em>Round 2:</em> Resolved folder selection friction during task creation by making category assignment explicit upon opening the creation modal.</li>
+                  </ul>
+                </li>
+              </ul>
+              <div style="margin-top: 24px;">
+                <a href="taskapp.html" class="btn btn-emerald">Read Full Case Study &rarr;</a>
+              </div>
+            </div>
+
+            <!-- Interactive Widget for TaskApp -->
+            <div class="interactive-box">
+              <div class="box-header">
+                <span class="box-title">UX Process Explorer</span>
+                <span class="box-badge">Google UX Methodology</span>
+              </div>
+
+              <div class="tab-btn-group">
+                <button class="tab-btn active" onclick="switchTaskTab(0, this)">1. Research & Persona</button>
+                <button class="tab-btn" onclick="switchTaskTab(1, this)">2. Paper Sketches</button>
+                <button class="tab-btn" onclick="switchTaskTab(2, this)">3. Digital IA Flow</button>
+                <button class="tab-btn" onclick="switchTaskTab(3, this)">4. Usability Insights</button>
+              </div>
+
+              <div id="task-display" class="tab-card-display">
+                <h5 id="task-title">Persona: Lukas (36, Software Engineer & Parent)</h5>
+                <p id="task-desc">Goal: Rapid task capture while commuting without fumbling through complex menus. Needs reliable voice capture, unified category filtering, and cross-device syncing.</p>
+                <div id="task-callout" class="callout">Core Insight: Shifted focus from purely visual simplicity to high-speed filtering and hands-free input.</div>
+              </div>
+
+              <!-- Quick Interaction Simulator -->
+              <div style="margin-top: 20px; background: #ffffff; border: 1px solid var(--border-light); border-radius: var(--radius-sm); padding: 14px;">
+                <div style="font-size: 0.8rem; font-weight: 700; text-transform: uppercase; color: var(--text-muted); margin-bottom: 8px;">Interactive Filter Prototype (Demo)</div>
+                <div class="tab-btn-group" style="margin-bottom: 12px;">
+                  <button class="tab-btn active" style="font-size: 0.75rem; padding: 4px 8px;" onclick="filterTasks('All', this)">All (4)</button>
+                  <button class="tab-btn" style="font-size: 0.75rem; padding: 4px 8px;" onclick="filterTasks('Work', this)">Work (2)</button>
+                  <button class="tab-btn" style="font-size: 0.75rem; padding: 4px 8px;" onclick="filterTasks('Family', this)">Family (2)</button>
+                </div>
+                <div id="task-list-items" style="font-size: 0.85rem;">
+                  <div style="padding: 6px 0; border-bottom: 1px solid var(--border-light); display: flex; justify-content: space-between;">
+                    <span>[Work] Review Component Hierarchy</span>
+                    <span style="color: var(--emerald-600); font-weight: 600;">High</span>
+                  </div>
+                  <div style="padding: 6px 0; border-bottom: 1px solid var(--border-light); display: flex; justify-content: space-between;">
+                    <span>[Work] Sync with Engineering Team</span>
+                    <span style="color: var(--text-muted);">2:00 PM</span>
+                  </div>
+                  <div style="padding: 6px 0; border-bottom: 1px solid var(--border-light); display: flex; justify-content: space-between;">
+                    <span>[Family] Dentist Appointment</span>
+                    <span style="color: var(--text-muted);">Today</span>
+                  </div>
+                  <div style="padding: 6px 0; display: flex; justify-content: space-between;">
+                    <span>[Family] Grocery Pickup</span>
+                    <span style="color: var(--text-muted);">5:30 PM</span>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Case Study 4: Flying Recipes -->
+      <article class="case-card">
+        <div class="case-header">
+          <div class="case-meta">
+            <span><strong>Role:</strong> Solo Product Designer & Full-Stack Developer</span>
+            <span>&bull;</span>
+            <span><strong>Live Product:</strong> <a href="https://flying.recipes" target="_blank" style="color: var(--emerald-700); text-decoration: underline;">flying.recipes ↗</a></span>
+            <span>&bull;</span>
+            <span><strong>Focus:</strong> Automated Math & Cognitive Load Reduction</span>
+          </div>
+          <h3 class="case-title">Flying Recipes 2.0 &mdash; Cross-System Kitchen Adaptation</h3>
+          <p class="case-tagline">Eliminating cognitive friction and mental recalculation for European home cooks in the United States.</p>
+        </div>
+        <div class="case-body">
+          <div class="grid-2col">
+            <div class="case-details">
+              <img src="assets/fr-scaler.jpg" alt="Flying Recipes Application Interface" class="case-artifact-img">
+              <h4>The Everyday Systemic Friction</h4>
+              <p>
+                European cooks in the US struggle with dual conversion barriers: translating grams to volumetric cups/ounces, Celsius to Fahrenheit, and recalculating ingredient proportions when moving between standard European and non-standard American baking pan geometries.
+              </p>
+              <h4>Core System Capabilities</h4>
+              <ul>
+                <li><strong>Quick Unit Conversion:</strong> Lightweight real-time weight (g &harr; oz), volume (ml &harr; cups), and temperature (&deg;C &harr; &deg;F) tools.</li>
+                <li><strong>Surface-Area Proportional Scaling:</strong> Automatically calculates dimensional area ratios (e.g. 8" round vs 9x13" rectangular pan) and scales ingredient masses instantaneously.</li>
+                <li><strong>Kitchen-Context Usability:</strong> High-contrast glanceable ingredient blocks and checkable preparation steps optimized for mobile screens and split attention with messy hands.</li>
+                <li><strong>Full-Stack Architecture:</strong> Custom recipe builder and web scraper backed by PostgreSQL, Flask, and JavaScript.</li>
+              </ul>
+              <div style="margin-top: 24px;">
+                <a href="flying-recipes.html" class="btn btn-emerald">Read Full Case Study &rarr;</a>
+              </div>
+            </div>
+
+            <!-- Interactive Widget for Flying Recipes -->
+            <div class="interactive-box">
+              <div class="box-header">
+                <span class="box-title">Live Pan Scaler & Unit Engine</span>
+                <span class="box-badge">flying.recipes Engine</span>
+              </div>
+
+              <!-- Quick Convert Bar -->
+              <div class="fr-quick-convert">
+                <div class="fr-qc-box">
+                  <label>Weight</label>
+                  <input type="text" value="250g = 8.82 oz" readonly>
+                </div>
+                <div class="fr-qc-box">
+                  <label>Volume</label>
+                  <input type="text" value="240ml = 1.01 cups" readonly>
+                </div>
+                <div class="fr-qc-box">
+                  <label>Temperature</label>
+                  <input type="text" value="180&deg;C = 356&deg;F" readonly>
+                </div>
+              </div>
+
+              <!-- Pan Scaler Form -->
+              <div class="scaler-grid">
+                <div class="scaler-field">
+                  <label>In Recipe (Original Pan)</label>
+                  <select id="pan-orig" onchange="recalcRecipe()">
+                    <option value="1">8-inch Round (Standard EU)</option>
+                    <option value="1.25">9-inch Round</option>
+                  </select>
+                </div>
+                <div class="scaler-field">
+                  <label>I Have (Target US Pan)</label>
+                  <select id="pan-target" onchange="recalcRecipe()">
+                    <option value="1.56">10-inch Round (+56% Area)</option>
+                    <option value="2.3">9x13-inch Rect (+130% Area)</option>
+                    <option value="1">8-inch Round (1:1)</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="ingredient-list">
+                <div class="ingredient-item">
+                  <span>All-Purpose Flour</span>
+                  <strong id="ing-flour">312g (approx. 2.5 cups)</strong>
+                </div>
+                <div class="ingredient-item">
+                  <span>Granulated Sugar</span>
+                  <strong id="ing-sugar">156g (approx. 0.78 cups)</strong>
+                </div>
+                <div class="ingredient-item">
+                  <span>Unsalted Butter</span>
+                  <strong id="ing-butter">156g (1.37 sticks)</strong>
+                </div>
+                <div class="ingredient-item">
+                  <span>Calculated Oven Temp</span>
+                  <strong>180&deg;C &rarr; 356&deg;F</strong>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- Background & Credentials -->
+  <section id="experience" style="background: var(--bg-surface); border-top: 1px solid var(--border-light); border-bottom: 1px solid var(--border-light);">
+    <div class="container">
+      <div class="section-header" style="display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 16px;">
+        <div>
+          <span class="section-tag">Trajectory</span>
+          <h2 class="section-title">Experience & Credentials</h2>
+        </div>
+        <a href="resume.html" class="btn btn-outline">View Resume ↗</a>
+      </div>
+
+      <div class="exp-grid">
+        <div class="exp-card">
+          <h4>Professional Experience</h4>
+          <div class="timeline-item">
+            <div class="timeline-role">Product Development & UX/AI Validation Contributor</div>
+            <div class="timeline-company">CheckCells, Inc. &bull; 2023 &ndash; 2026 | Los Angeles, CA</div>
+            <div class="timeline-desc">Contributed to medical laboratory hardware development and software validation. Prototyped hardware interactions, performed laboratory testing, labeled computer vision datasets in Label Studio, and co-authored Seaman PRO Instructions for Use (IFU) documentation.</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-role">Assistant Medical Director</div>
+            <div class="timeline-company">Nasza Klinika &bull; 2016 &ndash; 2018 | Warsaw, Poland</div>
+            <div class="timeline-desc">Analyzed patient intake pipelines and operational clinical workflows to improve healthcare delivery, accessibility, and interdisciplinary coordination.</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-role">Neurology Physiotherapist</div>
+            <div class="timeline-company">Bielański Hospital &bull; 2013 &ndash; 2016 | Warsaw, Poland</div>
+            <div class="timeline-desc">Delivered neurological rehabilitation in clinical environments, building deep foundational empathy for accessibility, motor limitations, and human biomechanics.</div>
+          </div>
+        </div>
+
+        <div class="exp-card">
+          <h4>Education & Credentials</h4>
+          <div class="timeline-item">
+            <div class="timeline-role">UI/UX Design for AI Products</div>
+            <div class="timeline-company">Stanford Online &bull; 2025</div>
+            <div class="timeline-desc">Specialized in human-in-the-loop AI product strategy, user autonomy models, mixed-initiative interaction patterns, and ethical AI risk reviews.</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-role">Google UX Design Professional Certificate</div>
+            <div class="timeline-company">Google / Coursera &bull; In Progress</div>
+            <div class="timeline-desc">Comprehensive UX foundations: user research, accessible information architecture, paper wireframing, and iterative usability testing.</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-role">Software Engineering Fellowship</div>
+            <div class="timeline-company">Hackbright Academy &bull; 2023</div>
+            <div class="timeline-desc">Full-stack software engineering (Python, JavaScript, Flask, PostgreSQL, API architecture, data modeling).</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-role">MSc in Physiotherapy</div>
+            <div class="timeline-company">Medical University of Bialystok &bull; 2008 &ndash; 2013</div>
+            <div class="timeline-desc">Graduate study in physiology, biomechanics, and clinical research methodology.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Matrix -->
+  <section id="skills">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Capabilities</span>
+        <h2 class="section-title">Core Competencies</h2>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px;">
+        <div class="stat-card" style="background: #ffffff;">
+          <h4 style="font-size: 1rem; font-weight: 700; margin-bottom: 8px;">Interaction & Systems UX</h4>
+          <p style="font-size: 0.85rem; color: var(--text-secondary);">Complex Workflows, Figma Prototyping, Wireframing, User Research, Usability Testing.</p>
+        </div>
+        <div class="stat-card" style="background: #ffffff;">
+          <h4 style="font-size: 1rem; font-weight: 700; margin-bottom: 8px;">AI & Technical Product UX</h4>
+          <p style="font-size: 0.85rem; color: var(--text-secondary);">Human-in-the-Loop Design, Model Validation, Data Annotation (Label Studio), Ethical AI Boundaries.</p>
+        </div>
+        <div class="stat-card" style="background: #ffffff;">
+          <h4 style="font-size: 1rem; font-weight: 700; margin-bottom: 8px;">Hardware & Physical UX</h4>
+          <p style="font-size: 0.85rem; color: var(--text-secondary);">Device Ergonomics, Physical–Digital Interaction, Precision Hardware UX, User Manuals & IFU Documentation.</p>
+        </div>
+        <div class="stat-card" style="background: #ffffff;">
+          <h4 style="font-size: 1rem; font-weight: 700; margin-bottom: 8px;">Engineering Fluency</h4>
+          <p style="font-size: 0.85rem; color: var(--text-secondary);">HTML/CSS, JavaScript, Python, Flask, PostgreSQL, Git, AI-assisted prototyping, developer-ready specs.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" style="padding-bottom: 100px;">
+    <div class="container">
+      <div class="contact-card">
+        <h3 style="font-size: 1.85rem; font-weight: 700; margin-bottom: 12px;">Let's build something exceptional together.</h3>
+        <p style="font-size: 1.05rem; color: var(--text-secondary); margin-bottom: 32px;">
+          Currently open to Product Design and UI/UX opportunities across AI workflows, complex technical tools, and hardware systems in the Greater Los Angeles area and remote.
+        </p>
+        <div style="display: flex; justify-content: center; gap: 12px; flex-wrap: wrap;">
+          <a href="resume.html" class="btn btn-emerald">View Resume ↗</a>
+          <a href="mailto:angelika.a.mazurek@gmail.com" class="btn btn-primary">angelika.a.mazurek@gmail.com</a>
+          <a href="https://linkedin.com/in/angelmaz" target="_blank" class="btn btn-outline">LinkedIn ↗</a>
+          <a href="https://github.com/angelmaz" target="_blank" class="btn btn-outline">GitHub ↗</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Toast Notification -->
+  <div id="toast">Notification text</div>
+
+  <script>
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      toast.innerText = msg;
+      toast.classList.add('show');
+      setTimeout(() => { toast.classList.remove('show'); }, 2500);
+    }
+
+    // Hardware Evolution Tabs (Scoped properly)
+    const hwData = [
+      {
+        title: "V1: Laboratory Stand Prototype",
+        desc: "Initial benchtop prototype testing focal length and magnification geometry using an adjustable laboratory clamp stand.",
+        callout: "Finding: Unstable focal plane; demonstrated need for rigid dedicated housing."
+      },
+      {
+        title: "V2: Custom Machined Aluminum Cylinder",
+        desc: "Precision aluminum cylindrical housing designed for fixed camera-to-slide distance with standard laboratory lighting.",
+        callout: "Finding: Fixed camera distance failed to maintain consistent focus across sample loadings; demonstrated need for manual calibration."
+      },
+      {
+        title: "V3: Optical Mount on Circular Base",
+        desc: "Introduced rotatable threaded focus assembly and standard slide stage, mounted on a round desktop platform.",
+        callout: "Finding: Lightweight circular base shifted during slide insertion; slide positioning lacked multi-chamber orientation."
+      },
+      {
+        title: "V4: Current Seaman PRO Laboratory Station",
+        desc: "Heavier rectangular base, threaded camera focus adjustment, and slide carriage with chamber markings (1–4).",
+        callout: "Outcome: More stable sample positioning, clearer four-chamber orientation, and a more reliable imaging workflow."
+      }
+    ];
+
+    function switchHwTab(index, btn) {
+      btn.parentElement.querySelectorAll('button').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById('hw-title').innerText = hwData[index].title;
+      document.getElementById('hw-desc').innerText = hwData[index].desc;
+      document.getElementById('hw-callout').innerText = hwData[index].callout;
+    }
+
+    // Focus Simulator (0 = blurry, 100 = 100% sharp)
+    function adjustFocusSim(val) {
+      const feed = document.getElementById('cell-feed');
+      const label = document.getElementById('focus-label');
+      const blurAmount = (100 - val) * 0.12;
+      feed.style.filter = `blur(${blurAmount}px)`;
+      if (val >= 90) {
+        label.innerText = 'Sharp Focus (Optimal Quality)';
+        label.style.borderColor = 'var(--emerald-600)';
+        label.style.color = 'var(--emerald-700)';
+      } else {
+        label.innerText = `Focus: ${val}% (Adjust ring)`;
+        label.style.borderColor = 'var(--border-light)';
+        label.style.color = 'var(--text-primary)';
+      }
+    }
+
+    // MoodBridge Model Exploration
+    const mbModels = [
+      {
+        title: "Pattern C: Mixed-Initiative Interaction (Selected Direction)",
+        desc: "Shared control where user provides quick emotional input, AI generates 1 micro-suggestion (1–5 min), and user can instantly Accept, Modify, or Skip.",
+        callout: "Rationale: Best balance of speed, low effort on low-energy days, and complete preservation of human agency."
+      },
+      {
+        title: "Pattern A: Interface Agent (Conversational Guide)",
+        desc: "Chat-driven assistant asking conversational questions and suggesting tasks through text dialogues.",
+        callout: "Trade-off: Typing and conversational latency feel exhausting during low-energy emotional states."
+      },
+      {
+        title: "Pattern B: Direct Manipulation Dashboard",
+        desc: "Full dashboard with mood sliders, tag pickers, and draggable suggestion cards where user manually crafts their plan.",
+        callout: "Trade-off: Maximum transparency, but high cognitive load and excessive effort required when overwhelmed."
+      }
+    ];
+
+    function switchMbModel(index, btn) {
+      btn.parentElement.querySelectorAll('button').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById('mb-model-title').innerText = mbModels[index].title;
+      document.getElementById('mb-model-desc').innerText = mbModels[index].desc;
+      document.getElementById('mb-model-callout').innerText = mbModels[index].callout;
+    }
+
+    // MoodBridge Phone Simulation
+    const moodSuggestions = {
+      Neutral: { action: "1-Minute Grounding Breath", reason: "Designed to require minimal effort" },
+      Stressed: { action: "2-Minute Box Breathing", reason: "Short, low-complexity option" },
+      Low: { action: "1-Minute Gentle Stretch", reason: "Designed for low-energy moments" },
+      Fine: { action: "1-Minute Daily Reflection", reason: "Optional moment of reflection" }
+    };
+
+    function selectMood(mood, btn) {
+      btn.parentElement.querySelectorAll('button').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById('mood-action-text').innerText = moodSuggestions[mood].action;
+      document.getElementById('mood-reason-text').innerText = moodSuggestions[mood].reason;
+    }
+
+    function modifyMoodSuggestion() {
+      const alternatives = [
+        { action: "Alternative: 30-Second Shoulder Drop", reason: "Quick relaxation reset" },
+        { action: "Alternative: 2-Minute Calming Breath", reason: "Low-friction grounding exercise" },
+        { action: "Alternative: Brief Posture Check", reason: "Simple physical alignment" }
+      ];
+      const randomAlt = alternatives[Math.floor(Math.random() * alternatives.length)];
+      document.getElementById('mood-action-text').innerText = randomAlt.action;
+      document.getElementById('mood-reason-text').innerText = randomAlt.reason;
+      showToast('Suggestion modified without algorithm penalty');
+    }
+
+    // TaskApp Explorer Tabs
+    const taskProcess = [
+      {
+        title: "1. Research & Persona: Lukas (36, Software Engineer & Parent)",
+        desc: "Lukas manages heavy dual-work responsibilities and family logistics. Frustrated by cluttered apps and the inability to quickly add tasks while commuting.",
+        callout: "Research Shift: Switched priority from standard list views to instant hands-free voice capture and category filters."
+      },
+      {
+        title: "2. Exploratory Paper Wireframes",
+        desc: "Sketched 5 layout variations focusing on thumb-zone action buttons, top priority tag carousels, and inline calendar views.",
+        callout: "Design Decision: Chose bottom-right prominent '+' button and persistent top filter tags to minimize reach friction."
+      },
+      {
+        title: "3. Digital Information Architecture & Component Flow",
+        desc: "Constructed low-fidelity screen structure in Figma connecting master list directories, tag filters, modal creation, and date selectors.",
+        callout: "System Map: Established clean state flows preventing modal dead-ends and redundant confirmation dialogues."
+      },
+      {
+        title: "4. Multi-Stage Usability Testing (6 Participants)",
+        desc: "Conducted 2 iterative testing rounds. Round 1 exposed tag ambiguity and need for shared lists; Round 2 refined folder discovery during task creation.",
+        callout: "Post-Test Improvement: Made category assignment explicit on task creation screen to prevent user navigation drop-offs."
+      }
+    ];
+
+    function switchTaskTab(index, btn) {
+      btn.parentElement.querySelectorAll('button').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById('task-title').innerText = taskProcess[index].title;
+      document.getElementById('task-desc').innerText = taskProcess[index].desc;
+      document.getElementById('task-callout').innerText = taskProcess[index].callout;
+    }
+
+    function filterTasks(cat, btn) {
+      btn.parentElement.querySelectorAll('button').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const list = document.getElementById('task-list-items');
+      if (cat === 'Work') {
+        list.innerHTML = `
+          <div style="padding: 6px 0; border-bottom: 1px solid var(--border-light); display: flex; justify-content: space-between;">
+            <span>[Work] Review Component Hierarchy</span>
+            <span style="color: var(--emerald-600); font-weight: 600;">High</span>
+          </div>
+          <div style="padding: 6px 0; display: flex; justify-content: space-between;">
+            <span>[Work] Sync with Engineering Team</span>
+            <span style="color: var(--text-muted);">2:00 PM</span>
+          </div>
+        `;
+      } else if (cat === 'Family') {
+        list.innerHTML = `
+          <div style="padding: 6px 0; border-bottom: 1px solid var(--border-light); display: flex; justify-content: space-between;">
+            <span>[Family] Dentist Appointment</span>
+            <span style="color: var(--text-muted);">Today</span>
+          </div>
+          <div style="padding: 6px 0; display: flex; justify-content: space-between;">
+            <span>[Family] Grocery Pickup</span>
+            <span style="color: var(--text-muted);">5:30 PM</span>
+          </div>
+        `;
+      } else {
+        list.innerHTML = `
+          <div style="padding: 6px 0; border-bottom: 1px solid var(--border-light); display: flex; justify-content: space-between;">
+            <span>[Work] Review Component Hierarchy</span>
+            <span style="color: var(--emerald-600); font-weight: 600;">High</span>
+          </div>
+          <div style="padding: 6px 0; border-bottom: 1px solid var(--border-light); display: flex; justify-content: space-between;">
+            <span>[Work] Sync with Engineering Team</span>
+            <span style="color: var(--text-muted);">2:00 PM</span>
+          </div>
+          <div style="padding: 6px 0; border-bottom: 1px solid var(--border-light); display: flex; justify-content: space-between;">
+            <span>[Family] Dentist Appointment</span>
+            <span style="color: var(--text-muted);">Today</span>
+          </div>
+          <div style="padding: 6px 0; display: flex; justify-content: space-between;">
+            <span>[Family] Grocery Pickup</span>
+            <span style="color: var(--text-muted);">5:30 PM</span>
+          </div>
+        `;
+      }
+    }
+
+    // Flying Recipes Scaler
+    function recalcRecipe() {
+      const orig = parseFloat(document.getElementById('pan-orig').value);
+      const target = parseFloat(document.getElementById('pan-target').value);
+      const factor = target / orig;
+
+      const flourBase = 200;
+      const sugarBase = 100;
+      const butterBase = 100;
+
+      const fGrams = Math.round(flourBase * factor);
+      const sGrams = Math.round(sugarBase * factor);
+      const bGrams = Math.round(butterBase * factor);
+
+      document.getElementById('ing-flour').innerText = `${fGrams}g (approx. ${(fGrams / 125).toFixed(2)} cups)`;
+      document.getElementById('ing-sugar').innerText = `${sGrams}g (approx. ${(sGrams / 200).toFixed(2)} cups)`;
+      document.getElementById('ing-butter').innerText = `${bGrams}g (${(bGrams / 113.5).toFixed(2)} sticks)`;
+    }
+  </script>
+</body>
+</html>

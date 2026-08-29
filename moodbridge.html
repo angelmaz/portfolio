@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MoodBridge Case Study — Angelika Mazurek</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-main: #ffffff;
+      --bg-surface: #f8fafc;
+      --border-light: #e2e8f0;
+      --border-hover: #cbd5e1;
+      --text-primary: #0f172a;
+      --text-secondary: #334155;
+      --text-muted: #64748b;
+      --emerald-600: #059669;
+      --emerald-50: #ecfdf5;
+      --emerald-700: #047857;
+      --radius-sm: 6px;
+      --radius-md: 12px;
+      --radius-lg: 16px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: var(--bg-main); color: var(--text-primary); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+    a { color: inherit; text-decoration: none; }
+
+    /* Site Navigation (1180px) */
+    .site-nav {
+      position: sticky;
+      top: 0;
+      background: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-light);
+      z-index: 100;
+      width: 100%;
+    }
+    .nav-container {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    .nav-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 72px;
+    }
+    .logo-group {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-shrink: 0;
+      height: 100%;
+    }
+    .logo-name {
+      font-weight: 700;
+      font-size: 1.125rem;
+      letter-spacing: -0.02em;
+      display: inline-flex;
+      align-items: center;
+    }
+    .badge-tag {
+      font-size: 0.75rem;
+      font-weight: 600;
+      background: var(--emerald-50);
+      color: var(--emerald-700);
+      border: 1px solid #d1fae5;
+      padding: 3px 8px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      line-height: 1;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      height: 100%;
+    }
+    .nav-links li {
+      display: flex;
+      align-items: center;
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+    .nav-links a {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      transition: color 0.15s ease;
+      display: inline-flex;
+      align-items: center;
+      line-height: 1;
+    }
+    .nav-links a:hover { color: var(--text-primary); }
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-shrink: 0;
+      height: 100%;
+    }
+    
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      padding: 9px 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      border: 1px solid transparent;
+      line-height: 1;
+    }
+    .btn-primary { background: var(--text-primary); color: #ffffff; }
+    .btn-primary:hover { background: #1e293b; }
+    .btn-outline { background: #ffffff; border-color: var(--border-light); color: var(--text-primary); }
+    .btn-outline:hover { background: var(--bg-surface); border-color: var(--border-hover); }
+
+    @media (max-width: 860px) { .nav-links { display: none; } }
+
+    /* Case Study Main Container (960px) */
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 24px;
+      width: 100%;
+    }
+    
+    .hero-cs { padding: 60px 0 40px; border-bottom: 1px solid var(--border-light); }
+    .tag { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--emerald-600); background: var(--emerald-50); padding: 4px 10px; border-radius: 999px; }
+    h1 { font-size: 2.35rem; font-weight: 800; margin: 16px 0 12px; letter-spacing: -0.02em; line-height: 1.2; }
+    .lead { font-size: 1.15rem; color: var(--text-secondary); margin-bottom: 24px; }
+    
+    .meta-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; background: var(--bg-surface); padding: 20px; border-radius: var(--radius-md); border: 1px solid var(--border-light); }
+    .meta-item strong { display: block; font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; }
+    .meta-item span { font-size: 0.95rem; font-weight: 600; color: var(--text-primary); }
+
+    .content-section { padding: 48px 0; border-bottom: 1px solid var(--border-light); }
+    h2 { font-size: 1.5rem; font-weight: 700; margin-bottom: 16px; letter-spacing: -0.01em; }
+    h3 { font-size: 1.15rem; font-weight: 700; margin: 20px 0 10px; }
+    p { font-size: 1rem; color: var(--text-secondary); margin-bottom: 16px; }
+    ul { margin-left: 20px; margin-bottom: 20px; color: var(--text-secondary); }
+    li { margin-bottom: 8px; }
+
+    .img-container { margin: 24px 0; background: var(--bg-surface); border: 1px solid var(--border-light); border-radius: var(--radius-md); overflow: hidden; padding: 16px; text-align: center; }
+    .img-container img { width: 100%; max-height: 480px; object-fit: contain; display: block; margin: 0 auto; border-radius: 6px; }
+    .img-caption { font-size: 0.85rem; color: var(--text-muted); text-align: center; margin-top: 12px; font-weight: 500; line-height: 1.4; }
+
+    .grid-2col { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 24px 0; }
+    @media (max-width: 700px) { .grid-2col { grid-template-columns: 1fr; } }
+
+    .principle-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-md);
+      padding: 20px;
+    }
+    .principle-card h4 { font-size: 1rem; font-weight: 700; margin-bottom: 6px; color: var(--text-primary); }
+    .principle-card p { font-size: 0.875rem; color: var(--text-secondary); margin-bottom: 0; line-height: 1.5; }
+
+    .callout-box {
+      background: var(--bg-surface);
+      border-left: 4px solid var(--emerald-600);
+      padding: 16px 20px;
+      border-radius: 0 var(--radius-md) var(--radius-md) 0;
+      margin: 20px 0;
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+    }
+
+    .comp-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+      font-size: 0.9rem;
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+    }
+    .comp-table th, .comp-table td { padding: 14px 18px; text-align: left; border-bottom: 1px solid var(--border-light); }
+    .comp-table th { background: var(--bg-surface); font-weight: 700; }
+    .comp-table td { vertical-align: middle; }
+    .back-link { font-weight: 600; color: var(--emerald-600); text-decoration: none; font-size: 0.9rem; }
+  </style>
+</head>
+<body>
+
+  <!-- Full-Width Navbar Container -->
+  <header class="site-nav">
+    <div class="nav-container">
+      <div class="nav-wrap">
+        <div class="logo-group">
+          <a href="index.html" class="logo-name">Angelika Mazurek</a>
+          <span class="badge-tag">Product & AI UX</span>
+        </div>
+        <ul class="nav-links">
+          <li><a href="index.html#work">Case Studies</a></li>
+          <li><a href="index.html#experience">Background</a></li>
+          <li><a href="index.html#skills">Skills</a></li>
+          <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+        <div class="nav-actions">
+          <a href="resume.html" class="btn btn-outline">Resume ↗</a>
+          <a href="index.html#contact" class="btn btn-primary">Get in Touch</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Centered Article Content Container (960px) -->
+  <div class="container">
+    <div class="hero-cs">
+      <span class="tag">Conceptual Capstone &bull; Stanford Online</span>
+      <h1>MoodBridge 2.0: Ethical Intelligence-Augmentation System</h1>
+      <p class="lead">An interaction architecture for emotional regulation designed to reduce decision fatigue, protect user autonomy, and replace prescriptive AI automation with contextual intelligence augmentation.</p>
+      
+      <div class="meta-grid">
+        <div class="meta-item">
+          <strong>Course & Context</strong>
+          <span>Stanford Online — UI/UX Design for AI Products</span>
+        </div>
+        <div class="meta-item">
+          <strong>Role</strong>
+          <span>Product Designer (AI Interaction, UX Research, Ethical Safeguards)</span>
+        </div>
+        <div class="meta-item">
+          <strong>Paradigm</strong>
+          <span>Intelligence Augmentation (IA) &bull; Human-in-the-Loop</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section 1: Problem & Research -->
+    <div class="content-section">
+      <h2>1. The Problem: Decision Fatigue in Low-Energy States</h2>
+      <p>People experiencing stress or low mood can face increased decision fatigue. When emotional regulation apps present extensive menus of 30-minute meditations, complex journaling prompts, or rigid streak goals, the cognitive effort required to choose can make engagement more difficult.</p>
+      <p>Furthermore, many digital wellness applications rely on overly cheerful or prescriptive wellness language, which users can perceive as patronizing or artificial during moments of distress.</p>
+      
+      <div class="callout-box">
+        <strong>Core Research Insight:</strong> Participants described decision-making as significantly harder during low-energy or stressed states. When overwhelmed, users prefer exactly one low-friction micro-action over expansive catalogs of self-care options.
+      </div>
+    </div>
+
+    <!-- Section 2: Research-Informed Design Principles -->
+    <div class="content-section">
+      <h2>2. Research-Informed Design Principles</h2>
+      <p>Three exploratory interviews shaped the core interaction model. Participants consistently expressed a desire for minimal interaction overhead, grounded tone, greater control over personal data, and activities that could be completed in 1 to 5 minutes.</p>
+
+      <div class="grid-2col">
+        <div class="principle-card">
+          <h4>1. One Suggestion at a Time</h4>
+          <p>Eliminates decision paralysis by offering a single, contextual micro-action instead of an extensive catalog.</p>
+        </div>
+        <div class="principle-card">
+          <h4>2. 1–5 Minute Micro-Actions</h4>
+          <p>Low-friction activities (e.g., box breathing, gentle posture reset) designed to be achievable during low-energy moments.</p>
+        </div>
+        <div class="principle-card">
+          <h4>3. Grounded & Neutral Tone</h4>
+          <p>Replaces forced cheerfulness with calm, objective language to maintain user trust and respect emotional reality.</p>
+        </div>
+        <div class="principle-card">
+          <h4>4. User Agency: Accept / Modify / Skip</h4>
+          <p>Ensures zero penalty or guilt mechanics when users choose not to engage or request an alternative difficulty.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section 3: Core Interaction Architecture -->
+    <div class="content-section">
+      <h2>3. Core Interaction Architecture</h2>
+      <p>MoodBridge implements a <strong>Mixed-Initiative Interaction model</strong>. The user provides a lightweight check-in, the system proposes a single contextual micro-action, and the user retains full authority over how to proceed.</p>
+
+      <div class="img-container">
+        <img src="assets/moodbridge-wireframes.png" alt="MoodBridge Wireframe Flow">
+        <div class="img-caption">Core Wireframe Architecture: Minimal check-in prompt leading directly to a single micro-action with instant user controls (Accept, Modify, Skip).</div>
+      </div>
+
+      <ul>
+        <li><strong>Accept:</strong> Initiates a brief, distraction-free guided timer for the suggested action.</li>
+        <li><strong>Modify:</strong> Instantly swaps the suggestion for a lower-intensity alternative without requiring conversational text prompts.</li>
+        <li><strong>Skip:</strong> Closes the session cleanly with zero streak loss, negative progress indicators, or guilt triggers.</li>
+      </ul>
+    </div>
+
+    <!-- Section 4: Prescriptive Automation vs. Augmented Intelligence -->
+    <div class="content-section">
+      <h2>4. Prescriptive Automation vs. Augmented Intelligence</h2>
+      <p>During the design exploration, I compared a rigid automation approach against an intelligence-augmentation model that preserves human agency:</p>
+
+      <table class="comp-table">
+        <thead>
+          <tr>
+            <th>Dimension</th>
+            <th>Prescriptive Automation</th>
+            <th>Intelligence Augmentation (MoodBridge)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Control</strong></td>
+            <td>System determines next step</td>
+            <td><strong>AI proposes &rarr; User decides</strong></td>
+          </tr>
+          <tr>
+            <td><strong>Cognitive Load</strong></td>
+            <td>Multiple prompts & routines</td>
+            <td><strong>One contextual suggestion</strong></td>
+          </tr>
+          <tr>
+            <td><strong>Flexibility</strong></td>
+            <td>Fixed recommendation flow</td>
+            <td><strong>User Agency (Accept / Modify / Skip)</strong></td>
+          </tr>
+          <tr>
+            <td><strong>Tone</strong></td>
+            <td>Directive or overly cheerful</td>
+            <td><strong>Neutral, calm, and non-judgmental</strong></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Section 5: Responsible AI, Privacy & Escalation -->
+    <div class="content-section">
+      <h2>5. Responsible AI, Privacy & Escalation Safeguards</h2>
+      <p>Designing for personal emotional regulation requires strict ethical boundaries and clear risk mitigation:</p>
+      <ul>
+        <li><strong>Local-First Privacy:</strong> Check-in data is designed to remain on-device by default, reducing unnecessary cloud exposure and giving users greater control over sensitive personal data.</li>
+        <li><strong>Non-Diagnostic Scope:</strong> The system is strictly positioned as a personal wellbeing companion, avoiding clinical terminology, medical assertions, or simulated therapeutic advice.</li>
+        <li><strong>Responsible Escalation:</strong> If a user repeatedly reports high distress across consecutive check-ins, the system can surface optional professional support resources and crisis helplines without diagnosing the user or forcing an escalation.</li>
+      </ul>
+    </div>
+
+    <!-- Section 6: Constraints & Next Steps -->
+    <div class="content-section">
+      <h2>6. Project Constraints & What I'd Test Next</h2>
+      <div class="callout-box">
+        <strong>Project Context:</strong> MoodBridge was developed as a conceptual capstone project within the Stanford Online <em>UI/UX Design for AI Products</em> program. The interaction models, responsible-AI safeguards, and privacy approaches represent design directions rather than a deployed clinical software application.
+      </div>
+      <p>If taken into active development, future validation steps would include:</p>
+      <ul>
+        <li>Testing micro-action completion and perceived utility across varying fatigue levels in longitudinal diary studies.</li>
+        <li>Evaluating user comprehension of local vs. cloud data storage options during onboarding.</li>
+        <li>Refining alternative suggestion categories to ensure the "Modify" button delivers meaningful variety without reintroducing decision paralysis.</li>
+      </ul>
+    </div>
+
+    <div class="content-section" style="text-align: center;">
+      <a href="index.html" class="back-link" style="font-size: 1rem;">&larr; Return to All Case Studies</a>
+    </div>
+  </div>
+
+</body>
+</html>

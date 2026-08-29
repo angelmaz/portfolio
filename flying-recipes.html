@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Flying Recipes Case Study — Angelika Mazurek</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-main: #ffffff;
+      --bg-surface: #f8fafc;
+      --border-light: #e2e8f0;
+      --border-hover: #cbd5e1;
+      --text-primary: #0f172a;
+      --text-secondary: #334155;
+      --text-muted: #64748b;
+      --emerald-600: #059669;
+      --emerald-50: #ecfdf5;
+      --emerald-700: #047857;
+      --radius-sm: 6px;
+      --radius-md: 12px;
+      --radius-lg: 16px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: var(--bg-main); color: var(--text-primary); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+    a { color: inherit; text-decoration: none; }
+
+    /* Site Navigation (1180px) */
+    .site-nav {
+      position: sticky;
+      top: 0;
+      background: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-light);
+      z-index: 100;
+      width: 100%;
+    }
+    .nav-container {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    .nav-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 72px;
+    }
+    .logo-group {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-shrink: 0;
+      height: 100%;
+    }
+    .logo-name {
+      font-weight: 700;
+      font-size: 1.125rem;
+      letter-spacing: -0.02em;
+      display: inline-flex;
+      align-items: center;
+    }
+    .badge-tag {
+      font-size: 0.75rem;
+      font-weight: 600;
+      background: var(--emerald-50);
+      color: var(--emerald-700);
+      border: 1px solid #d1fae5;
+      padding: 3px 8px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      line-height: 1;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      height: 100%;
+    }
+    .nav-links li {
+      display: flex;
+      align-items: center;
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+    .nav-links a {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      transition: color 0.15s ease;
+      display: inline-flex;
+      align-items: center;
+      line-height: 1;
+    }
+    .nav-links a:hover { color: var(--text-primary); }
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-shrink: 0;
+      height: 100%;
+    }
+    
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      padding: 9px 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      border: 1px solid transparent;
+      line-height: 1;
+    }
+    .btn-primary { background: var(--text-primary); color: #ffffff; }
+    .btn-primary:hover { background: #1e293b; }
+    .btn-outline { background: #ffffff; border-color: var(--border-light); color: var(--text-primary); }
+    .btn-outline:hover { background: var(--bg-surface); border-color: var(--border-hover); }
+
+    @media (max-width: 860px) { .nav-links { display: none; } }
+
+    /* Case Study Main Container (960px) */
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 24px;
+      width: 100%;
+    }
+    
+    .hero-cs { padding: 60px 0 40px; border-bottom: 1px solid var(--border-light); }
+    .tag { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--emerald-600); background: var(--emerald-50); padding: 4px 10px; border-radius: 999px; }
+    h1 { font-size: 2.35rem; font-weight: 800; margin: 16px 0 12px; letter-spacing: -0.02em; line-height: 1.2; }
+    .lead { font-size: 1.15rem; color: var(--text-secondary); margin-bottom: 24px; }
+    
+    .meta-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; background: var(--bg-surface); padding: 20px; border-radius: var(--radius-md); border: 1px solid var(--border-light); }
+    .meta-item strong { display: block; font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; }
+    .meta-item span { font-size: 0.95rem; font-weight: 600; color: var(--text-primary); }
+    .meta-item a { color: var(--emerald-700); text-decoration: underline; }
+
+    .content-section { padding: 48px 0; border-bottom: 1px solid var(--border-light); }
+    h2 { font-size: 1.5rem; font-weight: 700; margin-bottom: 16px; letter-spacing: -0.01em; }
+    h3 { font-size: 1.15rem; font-weight: 700; margin: 20px 0 10px; }
+    p { font-size: 1rem; color: var(--text-secondary); margin-bottom: 16px; }
+    ul { margin-left: 20px; margin-bottom: 20px; color: var(--text-secondary); }
+    li { margin-bottom: 8px; }
+
+    .img-container { margin: 24px 0; background: var(--bg-surface); border: 1px solid var(--border-light); border-radius: var(--radius-md); overflow: hidden; padding: 16px; text-align: center; }
+    .img-container img { width: 100%; max-height: 480px; object-fit: contain; display: block; margin: 0 auto; border-radius: 6px; }
+    .img-caption { font-size: 0.85rem; color: var(--text-muted); text-align: center; margin-top: 12px; font-weight: 500; line-height: 1.4; }
+    
+    .grid-2col { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 24px 0; }
+    @media (max-width: 700px) { .grid-2col { grid-template-columns: 1fr; } }
+
+    .callout-box {
+      background: var(--bg-surface);
+      border-left: 4px solid var(--emerald-600);
+      padding: 16px 20px;
+      border-radius: 0 var(--radius-md) var(--radius-md) 0;
+      margin: 20px 0;
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+    }
+
+    .scope-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+      font-size: 0.9rem;
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+    }
+    .scope-table th, .scope-table td { padding: 14px 18px; text-align: left; border-bottom: 1px solid var(--border-light); }
+    .scope-table th { background: var(--bg-surface); font-weight: 700; width: 50%; }
+    .scope-table td { vertical-align: top; }
+    .back-link { font-weight: 600; color: var(--emerald-600); text-decoration: none; font-size: 0.9rem; }
+  </style>
+</head>
+<body>
+
+  <!-- Full-Width Navbar Container -->
+  <header class="site-nav">
+    <div class="nav-container">
+      <div class="nav-wrap">
+        <div class="logo-group">
+          <a href="index.html" class="logo-name">Angelika Mazurek</a>
+          <span class="badge-tag">Product & AI UX</span>
+        </div>
+        <ul class="nav-links">
+          <li><a href="index.html#work">Case Studies</a></li>
+          <li><a href="index.html#experience">Background</a></li>
+          <li><a href="index.html#skills">Skills</a></li>
+          <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+        <div class="nav-actions">
+          <a href="resume.html" class="btn btn-outline">Resume ↗</a>
+          <a href="index.html#contact" class="btn btn-primary">Get in Touch</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Centered Article Content Container (960px) -->
+  <div class="container">
+    <div class="hero-cs">
+      <span class="tag">Solo Product Design & Full-Stack Development</span>
+      <h1>Flying Recipes: Cross-System Recipe Conversion & Scaling</h1>
+      <p class="lead">A web application I designed and built from the ground up to reduce conversion friction between European recipes and U.S. cooking systems — from units and temperatures to baking pan sizes and ingredient scaling.</p>
+      
+      <div class="meta-grid">
+        <div class="meta-item">
+          <strong>Role</strong>
+          <span>Solo Product Designer & Full-Stack Developer</span>
+        </div>
+        <div class="meta-item">
+          <strong>Live Application</strong>
+          <span><a href="https://flying.recipes" target="_blank" rel="noopener noreferrer">flying.recipes ↗</a></span>
+        </div>
+        <div class="meta-item">
+          <strong>Stack & Architecture</strong>
+          <span>Python / Flask &bull; PostgreSQL &bull; JavaScript &bull; HTML5/CSS3</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section 1: The Problem -->
+    <div class="content-section">
+      <h2>1. The Everyday Problem: Dual Conversion Barriers</h2>
+      <p>European home cooks living in the U.S. often encounter friction when adapting familiar recipes to American units, temperatures, and pan sizes. The process typically requires managing three separate layers of mental translation simultaneously:</p>
+      <ul>
+        <li><strong>Unit Conversion:</strong> Translating mass in grams to volumetric cups, ounces, and sticks of butter.</li>
+        <li><strong>Thermal Conversion:</strong> Converting European Celsius baking temperatures to U.S. Fahrenheit oven dials.</li>
+        <li><strong>Dimensional Pan Scaling:</strong> Recalculating ingredient quantities when switching between European metric bakeware and different U.S. baking pan sizes and shapes.</li>
+      </ul>
+      <div class="callout-box">
+        <strong>Design Objective:</strong> Eliminate manual recalculations and split-attention friction by creating an automated engine that handles conversions and dimensional area scaling in real time.
+      </div>
+    </div>
+
+    <!-- Section 2: Core Engineering: Pan Scaling Engine -->
+    <div class="content-section">
+      <h2>2. Automated Surface-Area Scaling Engine</h2>
+      <p>Baking is sensitive to volume-to-surface-area ratios. When a recipe written for an 8-inch round cake pan is baked in a 9x13-inch rectangular pan, standard ingredient quantities yield a cake that is either undercooked or overly thin.</p>
+      <p>Flying Recipes calculates the surface area ratio between the original recipe pan and the user's target pan, then applies that multiplier across all ingredient quantities automatically:</p>
+
+      <div class="img-container">
+        <img src="assets/fr-scaler.jpg" alt="Interactive Baking Pan Scaler Interface">
+        <div class="img-caption">The Pan Scaler Tool: Dynamically scaling ingredient masses and baking parameters based on pan geometry comparison.</div>
+      </div>
+
+      <ul>
+        <li><strong>Geometric Area Calculation:</strong> Computes round (&pi; &times; r&sup2;) and rectangular (width &times; length) pan areas dynamically.</li>
+        <li><strong>Instant Multiplier Application:</strong> Scales grams, ounces, and volumetric approximations in real time without page reloads.</li>
+        <li><strong>Temperature Alignment:</strong> Simultaneously calculates corresponding oven temperature equivalents.</li>
+      </ul>
+    </div>
+
+    <!-- Section 3: Full-Stack Architecture -->
+    <div class="content-section">
+      <h2>3. Full-Stack Architecture & Data Modeling</h2>
+      <p>I engineered the application backend from scratch to manage user profiles, recipe structures, and ingredient parsing:</p>
+
+      <div class="img-container">
+        <img src="assets/fr-create.jpg" alt="Recipe Creator Interface">
+        <div class="img-caption">Custom Recipe Builder: Structured ingredient entry, step breakdown, and unit classification.</div>
+      </div>
+
+      <ul>
+        <li><strong>Application Logic:</strong> Built backend application logic, relational data models, and database workflows using Python, Flask, and PostgreSQL.</li>
+        <li><strong>Recipe Import Scraper:</strong> Engineered a web import workflow to extract unstructured recipe content from external websites and parse it into the application's structured database schema.</li>
+        <li><strong>State Management:</strong> Implemented client-side JavaScript to power instant unit switching and responsive recalculation without repeated round-trip database queries.</li>
+      </ul>
+    </div>
+
+    <!-- Section 4: Kitchen-Context UX -->
+    <div class="content-section">
+      <h2>4. Designing for Kitchen-Context UX</h2>
+      <p>Cooking is a high-distraction, hands-busy activity. Designing for the kitchen environment requires specific usability affordances that differ from standard desktop browsing:</p>
+
+      <div class="grid-2col">
+        <div class="img-container">
+          <img src="assets/fr-home.jpg" alt="Flying Recipes Home Interface">
+          <div class="img-caption">Glanceable unit conversion tools accessible directly from the landing page.</div>
+        </div>
+        <div class="img-container">
+          <img src="assets/fr-dashboard.jpg" alt="User Dashboard & Recipe Library">
+          <div class="img-caption">Organized recipe library with rapid search and categorization.</div>
+        </div>
+      </div>
+
+      <ul>
+        <li><strong>High-Contrast Typography:</strong> Optimized font sizing and hierarchy for visibility from counter-distance while cooking.</li>
+        <li><strong>Checkable Interactive Steps:</strong> Allows users to tap and track completed preparation steps with minimal cognitive load.</li>
+        <li><strong>Mobile-First Touch Targets:</strong> Generously sized buttons and input fields tailored for quick taps with messy fingers.</li>
+      </ul>
+    </div>
+
+    <!-- Section 5: End-to-End Ownership & Technical Scope -->
+    <div class="content-section">
+      <h2>5. End-to-End Ownership & Technical Scope</h2>
+      <p>Summary of direct execution across design, development, and project constraints:</p>
+
+      <table class="scope-table">
+        <thead>
+          <tr>
+            <th>UX & Product Design</th>
+            <th>Engineering & Implementation</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <ul>
+                <li>End-to-end user workflow for recipe conversion</li>
+                <li>Kitchen-context interaction patterns & mobile UI</li>
+                <li>Visual hierarchy for multi-unit ingredient blocks</li>
+                <li>Interactive pan-scaling layout & quick converters</li>
+              </ul>
+            </td>
+            <td>
+              <ul>
+                <li>Python & Flask backend routing and controllers</li>
+                <li>PostgreSQL relational database schema design</li>
+                <li>Recipe scraping and structured parsing engine</li>
+                <li>Client-side JavaScript for instant arithmetic calculations</li>
+              </ul>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="callout-box">
+        <strong>Project Context & Constraints:</strong> Flying Recipes was executed as an independent solo project. Validation was conducted through real-world personal cooking use and iterative self-testing rather than formal usability research.
+      </div>
+    </div>
+
+    <div class="content-section" style="text-align: center;">
+      <a href="index.html" class="back-link" style="font-size: 1rem;">&larr; Return to All Case Studies</a>
+    </div>
+  </div>
+
+</body>
+</html>
